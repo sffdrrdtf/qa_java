@@ -24,7 +24,7 @@ public class LionParameterTest {
     }
     Feline feline = Mockito.mock(Feline.class);
     @Test
-    public void CheckGetSex() throws Exception {
+    public void checkGetSex() throws Exception {
         Lion tel = new Lion(sex, feline);
         boolean actual = tel.doesHaveMane();
         assertEquals(expected, actual);

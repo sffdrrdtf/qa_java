@@ -6,16 +6,10 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.times;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
-    @Test
-    public void testGetKittens() throws Exception {
-        Lion lion = new Lion("Самец",new Feline());
-        assertEquals(1, lion.getKittens());
-    }
     @Mock
     Feline feline;
     @Test
@@ -33,5 +27,13 @@ public class LionTest {
             Assert.assertEquals("Используйте допустимые значения пола животного - самец или самка",
                     thrown.getMessage());
         }
+    }
+    @Mock
+    Feline sel;
+    @Test
+    public void testGetKittensMock() throws Exception {
+        Lion lion = new Lion("Самец",sel);
+        Mockito.when(lion.getKittens()).thenReturn(1);
+        Assert.assertEquals(1, lion.getKittens());
     }
 }
